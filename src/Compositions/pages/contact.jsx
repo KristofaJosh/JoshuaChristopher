@@ -1,9 +1,11 @@
 import React from "react";
-import Text from '../../Components/atoms/typography'
+import Header from "../../Components/molecules/header";
 
 
 export default function Contacts() {
     return (
-        <><Text variant={'default'} size={'BIG'}>Contact Page</Text></>
+        <>
+        <Header text={'Contact Me'}/>
+        </>
     )
 }

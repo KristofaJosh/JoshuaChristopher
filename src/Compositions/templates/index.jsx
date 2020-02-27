@@ -25,6 +25,22 @@ export function Footer(props) {
     )
 }
 
+export function Inner(props) {
+    return(
+        <InnerStyle>{props.children}</InnerStyle>
+    )
+}
+
+export function Content(props) {
+
+    return (
+        <ContentStyle>
+            {props.children}
+        </ContentStyle>
+    )
+
+}
+
 
 const BodyStyle = styled.div`
     flex: 1;
@@ -36,6 +52,19 @@ const FooterStyle = styled.div`
     background-color: ${footerBackgroundColor};
     min-height: 100px;
     color: ${footerTextColor}
+`;
+
+const ContentStyle = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const InnerStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 BodyStyle.propTypes = {
@@ -52,7 +81,6 @@ FooterStyle.propTypes = {
 
 FooterStyle.defaultProps = {
     variant: 'default',
-    size: 'default'
 };
 
 

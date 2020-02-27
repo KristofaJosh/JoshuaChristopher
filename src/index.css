@@ -33,14 +33,14 @@ p, a {
   text-decoration: none !important;
 }
 
-/*@media (max-width: 1200px) {*/
-/*  * {*/
-/*    font-size: 0.8rem;*/
-/*  }*/
-/*}*/
+@media (max-width: 1200px) {
+  * {
+    font-size: 0.8rem;
+  }
+}
 
-/*@media (max-width: 800px) {*/
-/*  * {*/
-/*    font-size: 0.5rem;*/
-/*  }*/
-/*}*/
+@media (max-width: 800px) {
+  * {
+    font-size: 0.5rem;
+  }
+}

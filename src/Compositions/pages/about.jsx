@@ -1,9 +1,11 @@
 import React from "react";
-import Text from '../../Components/atoms/typography'
+import Header from "../../Components/molecules/header";
 
 
 export default function About() {
     return (
-        <><Text variant={'default'} size={'big'}>About Page</Text></>
+        <>
+        <Header text={'About Me'}/>
+        </>
     )
 }

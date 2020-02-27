@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import {fontSize} from "../../constants";
 
 export default function Text(props) {
-    console.log(props);
     return (
         <TextStyle {...props}>{props.children}</TextStyle>
     );
