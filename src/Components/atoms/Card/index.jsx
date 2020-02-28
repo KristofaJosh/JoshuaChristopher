@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import ImageContainer from "../ImagePlaceholder";
 import Text from "../typography";
+import {footerBackgroundColor} from "../../constants";
+import Line from "../divider";
 
 export default function CardContainer(props) {
 
@@ -24,17 +26,21 @@ export function Card(props) {
                 <div>
                     <div className='title'>
                         <Text size={'sm'} weight={'800'}>{props.name}</Text>
+                        <Line/>
                     </div>
                     <div className='description'>
                         <Text size={'xsm'}>{props.details.description}</Text>
                     </div>
                 </div>
                 <div className='tools'>
+                    <Line/>
+
                     <Text size={'sm'}>
                         {props.details.tools.map(el =>
                             <ion-icon name={"logo-" + el}/>
                         )}
                     </Text>
+                    <Line/>
                 </div>
             </CardContent>
         </CardStyle>
@@ -84,7 +90,14 @@ const CardContent = styled.div`
     .description {
         width: 100%; 
         height: 6.9rem; 
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
+        
     };
+    .description::-webkit-scrollbar {
+        width: 0px;
+    }
     .tools {width: 100%;};
 `;
