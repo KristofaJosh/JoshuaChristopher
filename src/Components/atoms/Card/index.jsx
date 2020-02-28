@@ -84,7 +84,7 @@ const CardContent = styled.div`
     
     .title {
         letter-spacing: 0px;
-        line-height: 29px; 
+        line-height: 30px; 
     };
     
     .description {
@@ -94,7 +94,6 @@ const CardContent = styled.div`
         overflow-x: hidden;
         scrollbar-width: none; 
         -ms-overflow-style: none; 
-        
     };
     .description::-webkit-scrollbar {
         width: 0px;
