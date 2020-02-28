@@ -7,9 +7,13 @@ import Header from "../../Components/molecules/header";
 import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg"
 
 import {Content, Inner} from "../templates";
+import Socials from "../../Components/molecules/socials";
+import {RecentJobs} from "./jobs";
+
+export default function Home({changeTheme}) {
+    //api
 
 
-export default function Home() {
     return (
         <>
             <Content>
@@ -21,15 +25,24 @@ export default function Home() {
                         <Text size={'big'}>help</Text>
                         <Text size={'sm'}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                             Non, nemo dolor nihil animi similique eveniet!</Text>
-                        <Button variant={'secondary'}>Contact Me</Button>
+                        <Content>
+                            <Button variant={'secondary'} link={true}>Contact Me</Button>
+                            <Button variant={'primary'} fn={changeTheme}/>
+                        </Content>
                     </div>
                 </Inner>
                 <Inner>
-                    <ImageContainer image={Pic} shape={'50%'}/>
+                    <ImageContainer image={Pic} shape={'round'}/>
                 </Inner>
             </Content>
-
+            <Content>
+                <Inner>
+                    <Socials variant={'default'}/>
+                </Inner>
+                <Inner/>
+            </Content>
             <Header text={'Recent Projects'}/>
+            <RecentJobs/>
         </>
     )
 }

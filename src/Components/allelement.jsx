@@ -8,43 +8,86 @@ import Header from "../Components/molecules/header";
 
 import Pic from "../Components/atoms/ImagePlaceholder/pic.jpg"
 import Menu from "./molecules/menu";
-import {Content, Inner} from "../Compositions/templates";
+import {Content, Footer, Inner, InnerLeft, InnerRight} from "../Compositions/templates";
+import Socials from "./molecules/socials";
+import NavBar from "./organism/navbar";
+import FooterDiv from "./organism/footerdiv";
+import CardContainer, {Card} from "./atoms/Card";
+
 
 
 export default function All() {
     return (
         <>
-            <Logo variant={'logo'} text={'Joshua Christopher'}/>
-            <Menu/>
+            <Header text={'Atoms'}/>
+
+            <Logo variant={'logo'}/>
+            <Button variant={'primary'}>Contact Me</Button>
+            <Button variant={'secondary'}>Brief Me</Button>
             <Text size={'big'}>Hello</Text>
             <Text size={'med'}>Hello</Text>
             <Text size={'default'}>Hello</Text>
             <Text size={'sm'}>Hello</Text>
             <Text size={'xsm'}>Hello</Text>
-
-            <Button variant={'primary'}>Contact Me</Button>
-            <Button variant={'secondary'}>Brief Me</Button>
             <br/>
-            <Line variant={'default'}/>
+                <Line variant={'default'}/>
             <br/>
 
-            <ImageContainer image={Pic} shape={'50%'}/>
-            <ImageContainer image={Pic} shape={'50%'}/>
-            <ImageContainer image={Pic} shape={'50%'}/>
+            <CardContainer>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+            </CardContainer>
 
-            <Header text={'Header'}/>
-            <Header text={'Header'}/>
+
+            <Header text={'Molecules'}/>
+            <Menu/>
+            <Content>
+            <ImageContainer image={Pic} shape={'round'}/>
+            <ImageContainer image={Pic} />
+            {/*<ImageContainer image={'https://res.cloudinary.com/webweavers/image/upload/v1582806866/sample.jpg'} shape={'smcard'}/>*/}
+            </Content>
+            <Socials/>
+
+            <Header text={'Templates'}/>
 
             <Content>
                 <Inner>
-                    <Text size={'big'}>Hello</Text>
+                    <Text size={'med'}>Inner</Text>
                 </Inner>
                 <Inner>
-                    <Text size={'big'}>Hello</Text>
+                    <Text size={'med'}>Inner</Text>
                 </Inner>
             </Content>
-
-
+            <Content>
+                <InnerLeft>
+                    <Text size={'med'}>Inner Left</Text>
+                </InnerLeft>
+                <InnerLeft>
+                    <Text size={'med'}>Inner Left</Text>
+                </InnerLeft>
+            </Content>
+            <Content>
+                <InnerRight>
+                    <Text size={'med'}>Inner Right</Text>
+                </InnerRight>
+                <InnerRight>
+                    <Text size={'med'}>Inner Right</Text>
+                </InnerRight>
+            </Content>
+            <Header text={'Organism'}/>
+            <NavBar/>
+            <Footer>
+            <FooterDiv/>
+            </Footer>
         </>
     )
 }
+
+
+

@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+
 export default function ImageContainer({...props}) {
 
+
     return (
-        <ImageStyle>
+        <ImageStyle  shape={props.shape}>
             <Image src={props.image} alt='loading'/>
         </ImageStyle>
     )
 }
 
 const ImageStyle = styled.div`
-    background-color: grey;
     width: 100%;
     height: 100%;
     max-height: 400px;
@@ -21,7 +22,7 @@ const ImageStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${props => props.shape};
+    border-radius: ${({shape})=>shape==="round"?"50%": "0" };
 `;
 
 const Image = styled.img`

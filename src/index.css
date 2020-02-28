@@ -1,5 +1,5 @@
 * {
-  outline: 1px solid red;
+  /*outline: 1px solid red;*/
   padding: 0;
   margin: 0;
   font-family: Raleway, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', serif !important;
@@ -35,12 +35,18 @@ p, a {
 
 @media (max-width: 1200px) {
   * {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   * {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  * {
+    font-size: 0.65rem;
   }
 }

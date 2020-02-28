@@ -10,7 +10,8 @@ export default function Text(props) {
 }
 
 const TextStyle = styled.p`
-    font-size: ${fontSize}
+    font-size: ${fontSize};
+    font-weight: ${props=> props.weight || '0'};
 `;
 
 TextStyle.propTypes = {

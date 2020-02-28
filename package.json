@@ -6,13 +6,16 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "prop-types": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-slick": "^0.25.2",
+    "react-test-renderer": "^16.13.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.1",
-    "styled-theming": "^2.2.0",
-    "prop-types": "latest"
+    "styled-theming": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "snapshot-diff": "^0.7.0"
   }
 }

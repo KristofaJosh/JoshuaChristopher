@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when called  1`] = `
+<button
+  className="sc-AxirZ eGsmtj"
+>
+  <p
+    className="sc-AxjAm jA-DHev"
+  >
+    <span>
+       /&gt;
+    </span>
+  </p>
+</button>
+`;

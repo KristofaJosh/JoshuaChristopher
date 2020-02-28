@@ -17,7 +17,7 @@ export default function Menu(props) {
                 <NavLink exact activeClassName='active'
                          to={'/' + el}
                          key={el}
-                ><Text>{el}</Text></NavLink>
+                ><Text size={'sm'}>{el}</Text></NavLink>
             ))}
             <Button variant={'primary'}>brief me</Button>
 
@@ -27,11 +27,15 @@ export default function Menu(props) {
 }
 
 const MenuStyle = styled.div`
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
+    
+    @media (max-width: 900px){
+        width: 100%;        
+    }
 }
     
     a {
