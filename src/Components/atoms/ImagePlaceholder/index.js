@@ -7,7 +7,7 @@ export default function ImageContainer({...props}) {
 
     return (
         <ImageStyle  shape={props.shape}>
-            <Image src={props.image} alt='loading'/>
+            <Image src={props.image} height={props.height} alt='loading'/>
         </ImageStyle>
     )
 }
@@ -27,4 +27,5 @@ const ImageStyle = styled.div`
 
 const Image = styled.img`
     width: 100%;
+    min-height: ${props => props.height || '100%'};
 `;

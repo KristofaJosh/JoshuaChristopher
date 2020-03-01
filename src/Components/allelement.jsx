@@ -12,7 +12,7 @@ import {Content, Footer, Inner, InnerLeft, InnerRight} from "../Compositions/tem
 import Socials from "./molecules/socials";
 import NavBar from "./organism/navbar";
 import FooterDiv from "./organism/footerdiv";
-import CardContainer, {Card} from "./atoms/Card";
+// import CardContainer, {Card} from "./atoms/Card";
 
 
 
@@ -33,16 +33,9 @@ export default function All() {
                 <Line variant={'default'}/>
             <br/>
 
-            <CardContainer>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-            </CardContainer>
+            {/*<CardContainer>*/}
+            {/*   */}
+            {/*</CardContainer>*/}
 
 
             <Header text={'Molecules'}/>

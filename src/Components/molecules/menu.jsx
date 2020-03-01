@@ -17,7 +17,8 @@ export default function Menu(props) {
                 <NavLink exact activeClassName='active'
                          to={'/' + el}
                          key={el}
-                ><Text size={'sm'}>{el}</Text></NavLink>
+                ><Text size={'sm'}>{el}</Text>
+                </NavLink>
             ))}
             <Button variant={'primary'}>brief me</Button>
 

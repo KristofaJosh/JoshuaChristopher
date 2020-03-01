@@ -11,5 +11,9 @@ export const Color = {
     WHITE: "#fff",
     GREY: "#828181",
     NAVY: "#23272d",
-    DEFAULT: "#000"
+    DEFAULT: "#000",
+    CARDGREY: "#4d49490f",
+    CARDNAVY: "#1c2026b5",
 };
+
+
