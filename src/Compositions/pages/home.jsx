@@ -1,0 +1,48 @@
+import React from "react";
+import Text from '../../Components/atoms/typography';
+import Button from '../../Components/atoms/button';
+import ImageContainer from "../../Components/atoms/ImagePlaceholder";
+import Header from "../../Components/molecules/header";
+
+import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg"
+
+import {Content, Inner} from "../templates";
+import Socials from "../../Components/molecules/socials";
+import {RecentJobs} from "./jobs";
+
+export default function Home({changeTheme}) {
+    //api
+
+
+    return (
+        <>
+            <Content>
+                <Inner>
+                    <div>
+                        <Text size={'big'}>Bring your</Text>
+                        <Text size={'big'}>brand to life </Text>
+                        <Text size={'big'}>with my </Text>
+                        <Text size={'big'}>help</Text>
+                        <Text size={'sm'}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            Non, nemo dolor nihil animi similique eveniet!</Text>
+                        <Content>
+                            <Button variant={'secondary'} link={true}>Contact Me</Button>
+                            <Button variant={'primary'} fn={changeTheme}/>
+                        </Content>
+                    </div>
+                </Inner>
+                <Inner>
+                    <ImageContainer image={Pic} shape={'round'}/>
+                </Inner>
+            </Content>
+            <Content>
+                <Inner>
+                    <Socials variant={'default'}/>
+                </Inner>
+                <Inner/>
+            </Content>
+            <Header text={'Recent Projects'}/>
+            <RecentJobs/>
+        </>
+    )
+}
