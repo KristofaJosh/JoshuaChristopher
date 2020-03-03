@@ -19,6 +19,7 @@ function App() {
     const [mode, setMode] = useState('dark');
     const [data, setData] = useState(['']);
 
+
     function changeMode() {
         mode === 'light' ? setMode('dark') : setMode('light')
     }
