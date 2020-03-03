@@ -4,8 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardCarousel from "../../Components/organism/carousel";
 import CardContainer, {Card} from "../../Components/atoms/Card";
-// import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg";
-// import axios from 'axios'
+import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg";
 
 
 export default function Jobs({...props}) {
@@ -22,7 +21,7 @@ export default function Jobs({...props}) {
                     'and a non-root public URL. Learn how to configure a non-root public URL by running'+
                     'and a non-root public URL. Learn how to configure a non-root public URL by running',
                 src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'docker', 'angular'],
+                tools: ['html5', 'css3', 'docker', 'angular', 'heroku', 'vue', 'react', 'php', 'laravel', 'ruby', 'mathlab'],
             },
         },
         {   id: 2,
@@ -82,7 +81,7 @@ export default function Jobs({...props}) {
         <>
             <Header text={'Projects'}/>
             <CardContainer>
-                {props.api.map(el =>
+                {api.map(el =>
                     <Card id={el.id} image={el.image} name={el.name} url={el.url} type={el.type} details={ el.origin || el.details}/>
                 )}
             </CardContainer>

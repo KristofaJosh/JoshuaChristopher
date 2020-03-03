@@ -26,7 +26,7 @@ function App() {
     useEffect(()=>{
         API.get('https://rickandmortyapi.com/api/character/')
             .then(res=>{
-                console.log(res.data.results);
+                // console.log(res.data.results);
                 setData(res.data.results)
             }).catch(err=>{console.log(err)})
     }, []);
@@ -48,7 +48,7 @@ function App() {
                                 <Switch>
                                     <Route path="/all" component={All}/>
                                     <Route path="/about" component={About}/>
-                                    <Route path="/works" component={(props) => <Works {...props} api={data}/>}/>
+                                    <Route path="/works" component={(props) => <Works {...props} api2={data}/>}/>
                                     <Route path="/contacts" component={Contacts}/>
                                     <Route path="/home"
                                            component={(props) => <Home {...props} changeTheme={changeMode}/>}/>

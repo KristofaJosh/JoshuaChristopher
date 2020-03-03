@@ -4,7 +4,7 @@ import ImageContainer from "../ImagePlaceholder";
 import Text from "../typography";
 import Line from "../divider";
 import {backgroundColor} from "../../constants";
-// import './devicon.min.css';
+
 
 export default function CardContainer(props) {
 
@@ -34,21 +34,17 @@ export function Card(props) {
                         <Line/>
                     </div>
                     <div className='description'>
-                        <Text size={'xsm'}>{props.type }</Text>
-                        {/*<Text size={'xsm'}>{props.type ||props.details.description}</Text>*/}
+                        {/*<Text size={'xsm'}>{props.type }</Text>*/}
+                        <Text size={'xsm'}>{props.type ||props.details.description}</Text>
                     </div>
                 </div>
                 <div className='tools'>
                     <Line/>
-                    <i className="devicon-amazonwebservices-original"/>
-
-
-                    {/*<Text size={'sm'}>*/}
-                    {/*    {props.details.tools.map(el =>*/}
-                    {/*        <i className={"devicon-"+el+"-plain"}/>*/}
-                    {/*        // <ion-icon name={"logo-" + el}/>*/}
-                    {/*    )}*/}
-                    {/*</Text>*/}
+                    <Text size={'sm'}>
+                        {props.details.tools.map(el =>
+                            <i className={"devicon-"+el+"-plain"}/>
+                        )}
+                    </Text>
                     <Line/>
                 </div>
             </CardContent>
