@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardCarousel from "../../Components/organism/carousel";
 import CardContainer, {Card} from "../../Components/atoms/Card";
-import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg";
 
 
 export default function Jobs({...props}) {
