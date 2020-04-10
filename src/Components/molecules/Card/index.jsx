@@ -65,7 +65,7 @@ const CardContainerStyle = styled.div`
 `;
 
 const CardStyle = styled.div`
-    width: 16.7rem;
+    width: 20.7rem;
     min-width: 15.625rem;
     min-height: 25rem;
     margin: 1.1rem;
