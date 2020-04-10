@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-
 export default function ImageContainer({...props}) {
 
 
     return (
         <ImageStyle  shape={props.shape}>
-            <Image src={props.image} height={props.height} alt='loading'/>
+                <Image src={props.image} height={props.height} alt='loading'/>
         </ImageStyle>
     )
 }

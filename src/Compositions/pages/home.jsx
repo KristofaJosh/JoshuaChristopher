@@ -3,15 +3,14 @@ import Text from '../../Components/atoms/typography';
 import Button from '../../Components/atoms/button';
 import ImageContainer from "../../Components/atoms/ImagePlaceholder";
 import Header from "../../Components/molecules/header";
-
-import Pic from "../../Components/atoms/ImagePlaceholder/pic.jpg"
-
 import {Content, Inner} from "../templates";
 import Socials from "../../Components/molecules/socials";
 import {RecentJobs} from "./jobs";
+import Pic from "../../Components/atoms/ImagePlaceholder/image.jpg"
+import StyleContext from "../../Contexts/styleContext/styleContext";
+
 
 export default function Home({changeTheme}) {
-    //api
 
 
     return (
@@ -27,7 +26,12 @@ export default function Home({changeTheme}) {
                             Non, nemo dolor nihil animi similique eveniet!</Text>
                         <Content>
                             <Button variant={'secondary'} link={true}>Contact Me</Button>
-                            <Button variant={'primary'} fn={changeTheme}/>
+                            <StyleContext.Consumer>
+                                {
+                                    ({changeTheme})=>  <Button variant={'primary'} fn={changeTheme} />
+                                }
+                            </StyleContext.Consumer>
+
                         </Content>
                     </div>
                 </Inner>

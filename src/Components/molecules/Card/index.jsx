@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import ImageContainer from "../ImagePlaceholder";
-import Text from "../typography";
-import Line from "../divider";
+import ImageContainer from "../../atoms/ImagePlaceholder";
+import Text from "../../atoms/typography";
+import Line from "../../atoms/divider";
 import {backgroundColor} from "../../constants";
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 export default function CardContainer(props) {
@@ -18,7 +19,9 @@ export default function CardContainer(props) {
 export function Card(props) {
     return (
         <div {...props}>
-        <CardStyle  key={props.id}>
+            <LazyLoadComponent>
+
+            <CardStyle  key={props.id}>
             <Image>
                 <div>
                     <a href={props.url}>
@@ -49,7 +52,9 @@ export function Card(props) {
                 </div>
             </CardContent>
         </CardStyle>
+        </LazyLoadComponent>
         </div>
+
     )
 }
 
