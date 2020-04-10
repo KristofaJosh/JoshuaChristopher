@@ -6,7 +6,7 @@ import Line from "../atoms/divider";
 export default function Header(props) {
     return (
         <HeaderStyle>
-            <div><Text size={'med'}>{props.text}</Text></div>
+            <div><Text size={props.size || 'med'}>{props.text}</Text></div>
             <div><Line/></div>
         </HeaderStyle>
     )
