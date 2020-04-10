@@ -26,6 +26,18 @@ export default function Button(props) {
             </ButtonStyle>
         </>
     }
+    
+    if (props.empty){
+        element =
+            <>
+                <ButtonStyle variant={props.variant} onClick={props.fn}>
+                    <Text>{props.children}</Text>
+                </ButtonStyle>
+            </>
+    }
+    
+    
+    
     return (
         <>{element}</>
     );
