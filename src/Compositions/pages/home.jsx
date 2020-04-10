@@ -28,9 +28,7 @@ export default function Home({changeTheme}) {
                             <Button variant={'secondary'} link={true}>Contact Me</Button>
                             
                             <StyleContext.Consumer>
-                                {
-                                    ({changeTheme})=>  <Button variant={'primary'} empty fn={changeTheme}>☀</Button>
-                                }
+                                {({changeTheme})=>  <Button variant={'primary'} empty fn={changeTheme}>☀</Button>}
                             </StyleContext.Consumer>
 
                         </Content>

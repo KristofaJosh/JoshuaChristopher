@@ -11,26 +11,26 @@ export default function Jobs({...props}) {
     let api = [
         {   id: 2,
             image: "https://api.apiflash.com/v1/urltoimage?access_key=77460fb38d424cf4ae8f640f8bb0a541&url=https%3A%2F%2Fjoshuachristopher.netlify.com%2F",
-            name: 'Campus Transact',
+            name: 'This Portfolio',
             date: '2020-12-19',
             details: {
-                description: 'Just a description of the webpage or project will be here',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'heroku'],
+                description: 'You are currently viewing this site',
+                src: 'http://joshuachristopher.netlify.com',
+                tools: ['html5', 'css3', 'heroku', 'react'],
             },
         },
         {
             id: 3,
             image: "https://api.apiflash.com/v1/urltoimage?access_key=77460fb38d424cf4ae8f640f8bb0a541&url=https%3A%2F%2Fdecacentral.netlify.com%2F",
-            name: 'Der MarktPlatz',
+            name: 'Decagon Central',
             details: {
                 description: 'Unlike work correctly both with client-side routing ' +
                     'and a non-root public URL. Learn how to configure a non-root public URL by running'+
                     'and a non-root public URL. Learn how to configure a non-root public URL by running'+
                     'and a non-root public URL. Learn how to configure a non-root public URL by running'+
                     'and a non-root public URL. Learn how to configure a non-root public URL by running',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'vue'],
+                src: 'https://decacentral.netlify.com/login',
+                tools: ['html5', 'css3', 'django', 'react', 'typescript'],
             },
         },
         {   id: 4,
@@ -38,8 +38,8 @@ export default function Jobs({...props}) {
             name: 'Digicon',
             details: {
                 description: 'just a static webpage',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'apache'],
+                src: 'https://digiconmock.netlify.com/',
+                tools: ['html5', 'css3', 'bootstrap'],
             },
         },
         {   id: 5,
@@ -48,59 +48,23 @@ export default function Jobs({...props}) {
             details: {
                 description: 'just a static webpage',
                 src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'react'],
+                tools: ['html5', 'css3'],
             },
         },
         {   id: 6,
             image: "https://loremflickr.com/400/200?random=45",
-            name: 'Deca Vest',
+            name: 'Jodava',
             details: {
-                description: 'just a static webpage',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'apache', 'ps'],
+                description: 'an app that breacheses\n' +
+                    'the gap between customers\n' +
+                    'and business persons, while\n' +
+                    'still retaining the intimacy that\n' +
+                    'peer-to-peer chatting offers.',
+                src: '#',
+                tools: ['html5', 'css3', 'flask', 'JS'],
             },
         },
-        {
-            id: 7,
-            image: "https://loremflickr.com/400/200?random=22",
-            name: 'Der MarktPlatz',
-            details: {
-                description: 'Unlike work correctly both with client-side routing ' +
-                    'and a non-root public URL. Learn how to configure a non-root public URL by running'+
-                    'and a non-root public URL. Learn how to configure a non-root public URL by running'+
-                    'and a non-root public URL. Learn how to configure a non-root public URL by running'+
-                    'and a non-root public URL. Learn how to configure a non-root public URL by running',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'vue'],
-            },
-        },
-        {   id: 8,
-            image: "https://loremflickr.com/400/200?random=34",
-            name: 'Digicon',
-            details: {
-                description: 'just a static webpage',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'apache'],
-            },
-        },
-        {   id: 9,
-            image: "https://loremflickr.com/320/240/paris,girl/all",
-            name: 'Inizio',
-            details: {
-                description: 'just a static webpage',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'react'],
-            },
-        },
-        {   id: 10,
-            image: "https://loremflickr.com/400/200?random=45",
-            name: 'Deca Vest',
-            details: {
-                description: 'just a static webpage',
-                src: 'http://netlify.com',
-                tools: ['html5', 'css3', 'php', 'apache', 'ps'],
-            },
-        },
+        
     ];
 
     return (
@@ -108,7 +72,7 @@ export default function Jobs({...props}) {
             <Header text={'Projects'}/>
             <CardContainer>
                 {api.map(el =>
-                    <Card id={el.id} image={el.image} name={el.name} url={el.url} type={el.type} details={ el.origin || el.details}/>
+                    <Card id={el.id} image={el.image} name={el.name} details={el.details}/>
                 )}
             </CardContainer>
         </>

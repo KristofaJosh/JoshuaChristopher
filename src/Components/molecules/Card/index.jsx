@@ -4,11 +4,11 @@ import ImageContainer from "../../atoms/ImagePlaceholder";
 import Text from "../../atoms/typography";
 import Line from "../../atoms/divider";
 import {backgroundColor} from "../../constants";
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import {LazyLoadComponent} from 'react-lazy-load-image-component';
 
 
 export default function CardContainer(props) {
-
+    
     return (
         <CardContainerStyle>
             {props.children}
@@ -20,41 +20,40 @@ export function Card(props) {
     return (
         <div {...props}>
             <LazyLoadComponent>
-
-            <CardStyle  key={props.id}>
-            <Image>
-                <div>
-                    <a href={props.url}>
-                    {/*<a href={props.url|| props.details.src}>*/}
-                    <ImageContainer image={'' || props.image} height={'12.5rem'}/>
-                    </a>
-                </div>
-            </Image>
-            <CardContent variant={'card'}>
-                <div>
-                    <div className='title'>
-                        <Text size={'sm'} weight={'800'}>{props.name}</Text>
-                        <Line/>
-                    </div>
-                    <div className='description'>
-                        {/*<Text size={'xsm'}>{props.type }</Text>*/}
-                        <Text size={'xsm'}>{props.type ||props.details.description}</Text>
-                    </div>
-                </div>
-                <div className='tools'>
-                    <Line/>
-                    <Text size={'sm'}>
-                        {props.details.tools.map(el =>
-                            <i className={"devicon-"+el+"-plain"}/>
-                        )}
-                    </Text>
-                    <Line/>
-                </div>
-            </CardContent>
-        </CardStyle>
-        </LazyLoadComponent>
+                <CardStyle key={props.id} >
+                    <Image>
+                        <div>
+                            <a href={props.details.src}>
+                                {/*<a href={props.url|| props.details.src}>*/}
+                                <ImageContainer image={'' || props.image} height={'12.5rem'}/>
+                            </a>
+                        </div>
+                    </Image>
+                    <CardContent variant={'card'}>
+                        <div>
+                            <div className='title'>
+                                <Text size={'sm'} weight={'800'}>{props.name}</Text>
+                                <Line/>
+                            </div>
+                            <div className='description'>
+                                {/*<Text size={'xsm'}>{props.type }</Text>*/}
+                                <Text size={'xsm'}>{props.type || props.details.description}</Text>
+                            </div>
+                        </div>
+                        <div className='tools'>
+                            <Line/>
+                            <Text size={'sm'}>
+                                {props.details.tools.map(el =>
+                                    <i className={"devicon-" + el + "-plain"}/>
+                                )}
+                            </Text>
+                            <Line/>
+                        </div>
+                    </CardContent>
+                </CardStyle>
+            </LazyLoadComponent>
         </div>
-
+    
     )
 }
 
@@ -128,5 +127,10 @@ const CardContent = styled.div`
     .description::-webkit-scrollbar {
         width: 0px;
     }
-    .tools {width: 100%;};
+    .tools {
+        width: 100%;
+        i {
+            margin-right: 3px;
+        }
+    };
 `;
