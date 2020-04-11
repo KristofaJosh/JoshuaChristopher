@@ -56,5 +56,6 @@ export const fontSize = theme.variants('mode', 'size', {
     med: {light: TextSize.MEDIUM, dark: TextSize.MEDIUM,},
     sm: {light: TextSize.SMALL, dark: TextSize.SMALL,},
     xsm: {light: TextSize.X_SMALL, dark: TextSize.X_SMALL,},
+    xxsm: {light: TextSize.XX_SMALL, dark: TextSize.X_SMALL,},
     logo: {light: TextSize.NORMAL, dark: TextSize.NORMAL},
 });

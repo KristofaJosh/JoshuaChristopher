@@ -16,34 +16,33 @@ export default function CardContainer(props) {
     )
 }
 
-export function Card(props) {
+export function Card({details}) {
+    console.log(details);
     return (
-        <div {...props}>
+        <div>
             <LazyLoadComponent>
-                <CardStyle key={props.id} >
+                <CardStyle>
                     <Image>
                         <div>
-                            <a href={props.details.src}>
-                                {/*<a href={props.url|| props.details.src}>*/}
-                                <ImageContainer image={'' || props.image} height={'12.5rem'}/>
+                            <a href={details['project_details'].link}>
+                                <ImageContainer image={'' || details.project_snapshot} height={'12.5rem'}/>
                             </a>
                         </div>
                     </Image>
                     <CardContent variant={'card'}>
                         <div>
                             <div className='title'>
-                                <Text size={'sm'} weight={'800'}>{props.name}</Text>
+                                <Text size={'sm'} weight={'800'}>{details.name}</Text>
                                 <Line/>
                             </div>
                             <div className='description'>
-                                {/*<Text size={'xsm'}>{props.type }</Text>*/}
-                                <Text size={'xsm'}>{props.type || props.details.description}</Text>
+                                <Text size={'xsm'}>{details.project_details.description}</Text>
                             </div>
                         </div>
                         <div className='tools'>
                             <Line/>
                             <Text size={'sm'}>
-                                {props.details.tools.map(el =>
+                                {details.project_details.tools.map(el =>
                                     <i className={"devicon-" + el + "-plain"}/>
                                 )}
                             </Text>

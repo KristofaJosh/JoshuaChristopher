@@ -22,7 +22,7 @@ const PostJob = () => {
     
     const [message, setMessage] = useState('');
     const [linkState, setLinkState] = useState('');
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false);
     
     const WebImage = async (url, access_key, width, height, upload_preset) => {
         let resolved_url = url.replace(/:/g, "%3A").replace(/\//g, "%2F");
@@ -35,6 +35,7 @@ const PostJob = () => {
             method: "GET",
             responseType: "json",
         }).then((response) => {
+                setMessage('linking to cloudinary account');
                 formData.append('file', response.data.url);
                 formData.append('upload_preset', upload_preset);
                 axios({
@@ -43,19 +44,21 @@ const PostJob = () => {
                     data: formData,
                 })
                     .then((response) => {
+                        setMessage('image created and link created!');
                         data['project_snapshot'] = response.data.url.replace(/upload/g, "upload/w_400/");
                         setLinkState('Available');
-                        setMessage('great!');
-    
                         setLoader(false)
                     })
                     .catch((err) => {
-                        setLinkState('Are you sure that site is available ?');
-                        setMessage(err.message);
+                        setLinkState('Are you sure the site is available ?');
+                        setMessage(err.message+'. Image was not created, try again');
                         setLoader(false)
                     })
             }
-        ).catch((err) => {setMessage(err.message); setLoader(false)});
+        ).catch((err) => {
+            setMessage('Not Found, Did you forget to add http:// or https:// ?');
+            setLoader(false)
+        });
     };
     
     
@@ -93,7 +96,7 @@ const PostJob = () => {
             setForm(data);
             
             if (form.project_details.link) {
-                setLoader(true)
+                setLoader(true);
                 WebImage(
                     form.project_details.link,
                     "77460fb38d424cf4ae8f640f8bb0a541",
@@ -103,12 +106,9 @@ const PostJob = () => {
                 )
             }
             
-        } else {
-            setMessage('Fill all entries');
-            setTimeout(() => {
-                setMessage('')
-            }, 5000)
         }
+        
+        
         
         
     };
@@ -148,13 +148,13 @@ const PostJob = () => {
                         <Button variant={'secondary'}
                                 disabled={!form.project_details.tools || !form.project_details.description || !form.project_details.name || !form.project_details.link}
                                 type={'submit'}>{form.project_snapshot ? 'Post Project' : 'Create Project'}</Button>
-                        <span className={'error'}><Text type={'xsm'}>{message}</Text></span>
-                        <span style={{width:'20%'}}>{loader ?
-                                <div className="spinner-border" role="status">
-                                    <span className="sr-only"/>
-                                </div>
-                                :
-                                ''
+                        <span className={'error'}><Text size={'xxsm'}>{message}</Text></span>
+                        <span style={{width: '20%'}}>{loader ?
+                            <div className="spinner-border" role="status">
+                                <span className="sr-only"/>
+                            </div>
+                            :
+                            ''
                         }</span>
                     </div>
                 
@@ -175,17 +175,18 @@ const PostJob = () => {
                     <div className={'valueBlock'}>
                         <Text type={'med'}>Tools Used In Project:</Text>
                         <span>{
-                            form.project_details.tools.length > 0 && typeof (form.project_details.tools) === 'string'?
-                            form.project_details.tools
-                                .replace(',', '')
-                                .replace('.', '')
-                                .replace('and', '')
-                                .split(' ')
-                                .filter(el => el !== '')
-                                .map(el => (<i className={'tools devicon-' + el + '-plain'}/>))
-                            :
+                            form.project_details.tools.length > 0 && typeof (form.project_details.tools) === 'string' ?
+                                form.project_details.tools
+                                    .replace(',', '')
+                                    .replace('.', '')
+                                    .replace('and', '')
+                                    .split(' ')
+                                    .filter(el => el !== '')
+                                    .map(el => (<i className={'tools devicon-' + el + '-plain'}/>))
+                                :
                                 typeof (form.project_details.tools) === 'object' ?
-                                form.project_details.tools.map(el => (<i className={'tools devicon-' + el + '-plain'}/>))  :'waiting for input ...'
+                                    form.project_details.tools.map(el => (
+                                        <i className={'tools devicon-' + el + '-plain'}/>)) : 'waiting for input ...'
                         }
                         </span>
                     </div>
@@ -205,13 +206,16 @@ const PostJob = () => {
                             </span>
                     </div>
                     <div className={'valueBlock'}>
-                        <Text type={'med'}>Image:</Text>
+                        <Text type={'med'}>Image Preview:</Text>
                         <span><div>{form.project_snapshot ?
                             <img src={form.project_snapshot} alt="loading screenshot"/> :
                             <>
-                            <div className="spinner-border" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
+                                <span style={{width: '20%'}}>{loader ?
+                                    <div className="spinner-border" role="status">
+                                        <span className="sr-only"/>
+                                    </div>
+                                : ''}
+                                </span>
                             </>
                         }</div></span>
                     </div>
@@ -232,7 +236,7 @@ const PostFormStyle = styled.div`
 `;
 
 const FormStyle = styled.div`
-    width: 50%;
+    width: 60%;
     form {
         div {
             margin: 3rem;
