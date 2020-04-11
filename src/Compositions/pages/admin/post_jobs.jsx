@@ -22,13 +22,13 @@ const PostJob = () => {
     
     const [message, setMessage] = useState('');
     const [linkState, setLinkState] = useState('');
+    const [loader, setLoader] = useState(false)
     
     const WebImage = async (url, access_key, width, height, upload_preset) => {
         let resolved_url = url.replace(/:/g, "%3A").replace(/\//g, "%2F");
         let formData = new FormData();
         
-        setMessage('Getting Image');
-        
+        setMessage('getting image');
         
         axios({
             url: `https://api.apiflash.com/v1/urltoimage?access_key=${access_key}&format=png&height=${height}&response_type=json&url=${resolved_url}&width=${width}`,
@@ -45,13 +45,17 @@ const PostJob = () => {
                     .then((response) => {
                         data['project_snapshot'] = response.data.url.replace(/upload/g, "upload/w_400/");
                         setLinkState('Available');
+                        setMessage('great!');
+    
+                        setLoader(false)
                     })
                     .catch((err) => {
                         setLinkState('Are you sure that site is available ?');
-                        setMessage(err.message)
+                        setMessage(err.message);
+                        setLoader(false)
                     })
             }
-        ).catch((err) => setMessage(err.message));
+        ).catch((err) => {setMessage(err.message); setLoader(false)});
     };
     
     
@@ -85,10 +89,11 @@ const PostJob = () => {
                 result = form.project_details.tools.split(' ').filter(el => el !== '');
             }
             data = {...form, project_details: {...form.project_details, tools: result}};
-            console.log(data)
+            console.log(data);
             setForm(data);
             
             if (form.project_details.link) {
+                setLoader(true)
                 WebImage(
                     form.project_details.link,
                     "77460fb38d424cf4ae8f640f8bb0a541",
@@ -141,8 +146,16 @@ const PostJob = () => {
                     
                     <div className={'btn-message'}>
                         <Button variant={'secondary'}
-                                type={'submit'}>{form.project_snapshot ? 'Submit' : 'Post Project'}</Button>
-                        <span className={'error'}><Text type={'sm'}>{message}</Text></span>
+                                disabled={!form.project_details.tools || !form.project_details.description || !form.project_details.name || !form.project_details.link}
+                                type={'submit'}>{form.project_snapshot ? 'Post Project' : 'Create Project'}</Button>
+                        <span className={'error'}><Text type={'xsm'}>{message}</Text></span>
+                        <span style={{width:'20%'}}>{loader ?
+                                <div className="spinner-border" role="status">
+                                    <span className="sr-only"/>
+                                </div>
+                                :
+                                ''
+                        }</span>
                     </div>
                 
                 </form>
@@ -195,9 +208,12 @@ const PostJob = () => {
                         <Text type={'med'}>Image:</Text>
                         <span><div>{form.project_snapshot ?
                             <img src={form.project_snapshot} alt="loading screenshot"/> :
+                            <>
                             <div className="spinner-border" role="status">
                                 <span className="sr-only">Loading...</span>
-                            </div>}</div></span>
+                            </div>
+                            </>
+                        }</div></span>
                     </div>
                 </div>
             

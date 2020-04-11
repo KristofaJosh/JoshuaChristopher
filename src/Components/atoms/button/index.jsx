@@ -12,7 +12,7 @@ export default function Button(props) {
 
         element =
             <>
-                <ButtonStyle variant={props.variant} onClick={props.fn}>
+                <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
                     <a href="tel:+2348166870575"><Text>{props.children}
                         <span> /&gt;</span></Text></a>
                 </ButtonStyle>
@@ -21,7 +21,7 @@ export default function Button(props) {
     } else {
         element =
         <>
-            <ButtonStyle variant={props.variant} onClick={props.fn}>
+            <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
                 <Text>{props.children}<span> /&gt;</span></Text>
             </ButtonStyle>
         </>
@@ -30,7 +30,7 @@ export default function Button(props) {
     if (props.empty){
         element =
             <>
-                <ButtonStyle variant={props.variant} onClick={props.fn}>
+                <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
                     <Text>{props.children}</Text>
                 </ButtonStyle>
             </>
