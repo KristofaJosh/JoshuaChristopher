@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../../Components/molecules/header";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CardCarousel from "../../Components/organism/carousel";
 import CardContainer, {Card} from "../../Components/molecules/Card";
 
 
