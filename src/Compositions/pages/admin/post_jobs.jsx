@@ -128,7 +128,7 @@ const PostJob = () => {
                     </div>
                     <div>
                         <Text>Tools:</Text>
-                        <input type="text" name='tools' onChange={CreateProject} required/>
+                        <input type="text" name='tools' onChange={CreateProject} placeholder={'python javascript ruby ...'} required/>
                     </div>
                     <div>
                         <Text>Project Link:</Text>
