@@ -4,6 +4,7 @@ export const TextSize = {
     NORMAL: '1.2rem',
     SMALL: '1rem',
     X_SMALL: '0.8rem',
+    XX_SMALL: '0.65rem',
 };
 
 export const Color = {

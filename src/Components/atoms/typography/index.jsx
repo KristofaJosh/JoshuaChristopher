@@ -15,7 +15,7 @@ const TextStyle = styled.p`
 `;
 
 TextStyle.propTypes = {
-    variant: PropTypes.oneOf(['default', 'big', 'med', 'small', 'xsm'])
+    variant: PropTypes.oneOf(['default', 'big', 'med', 'small', 'xsm', 'xxsm'])
 };
 
 TextStyle.defaultProps = {
