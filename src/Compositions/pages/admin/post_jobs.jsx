@@ -26,10 +26,10 @@ const PostJob = () => {
     const WebImage = async (url, access_key, width, height, upload_preset) => {
         let resolved_url = url.replace(/:/g, "%3A").replace(/\//g, "%2F");
         let formData = new FormData();
-    
+        
         setMessage('Getting Image');
-    
-    
+        
+        
         axios({
             url: `https://api.apiflash.com/v1/urltoimage?access_key=${access_key}&format=png&height=${height}&response_type=json&url=${resolved_url}&width=${width}`,
             method: "GET",
@@ -66,7 +66,8 @@ const PostJob = () => {
                                 e.target.value.replace(/,/g, ' ').trim().toLowerCase() : e.target.value.trim()
                     },
             }
-        )
+        );
+        
     };
     
     useEffect(() => {
@@ -128,7 +129,8 @@ const PostJob = () => {
                         <Text>Project Link:</Text>
                         <span>
                             <span className={'loader'}>O</span>
-                            <input className={'loader-input'} type="text" name='link' placeholder={'http://'} onChange={CreateProject}/>
+                            <input className={'loader-input'} type="text" name='link' placeholder={'http://'}
+                                   onChange={CreateProject}/>
                             <span className={'linkState'}>{linkState}</span>
                         </span>
                     </div>
@@ -159,7 +161,20 @@ const PostJob = () => {
                     </div>
                     <div className={'valueBlock'}>
                         <Text type={'med'}>Tools Used In Project:</Text>
-                        <span>{<i className={"devicon-" + form.project_details.tools + "-plain"}/>|| 'waiting for input ...'}</span>
+                        <span>{
+                            form.project_details.tools.length > 0 && typeof (form.project_details.tools) === 'string'?
+                            form.project_details.tools
+                                .replace(',', '')
+                                .replace('.', '')
+                                .replace('and', '')
+                                .split(' ')
+                                .filter(el => el !== '')
+                                .map(el => (<i className={'tools devicon-' + el + '-plain'}/>))
+                            :
+                                typeof (form.project_details.tools) === 'object' ?
+                                form.project_details.tools.map(el => (<i className={'tools devicon-' + el + '-plain'}/>))  :'waiting for input ...'
+                        }
+                        </span>
                     </div>
                     <div className={'valueBlock'}>
                         <Text type={'med'}>Web Link to Project:</Text>
@@ -271,6 +286,9 @@ const PreviewStyle = styled.div`
             span div {
                 padding: 1rem;
                 img {width: 100%}
+            }
+            .tools {
+                padding: 0.3rem;
             }
         }
         .valueBlock:last-child{
