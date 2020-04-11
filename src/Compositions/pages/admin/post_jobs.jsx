@@ -1,38 +1,288 @@
-// import React from "react";
-import axios from 'axios'
+import React, {useEffect, useState} from "react";
+import styled from "styled-components";
+import Text from "../../../Components/atoms/typography";
+import Button from "../../../Components/atoms/button";
+import axios from 'axios';
+import {textColor} from "../../../Components/constants";
 
-
-// let access_key=77460fb38d424cf4ae8f640f8bb0a541
-// let format=png
-// let height=1080
-// let url=http%3A%2F%2Fgoogle.com%2Fpage
-// let width=1440
-
-// FlashGet API
-// export const WebImage = (url, access, width, height, cloudinary) => {
-//
-//     let resolved_url = url.replace(/:/g, '%3A').replace(/\//g, '%2F');
-//
-//     axios.get(`https://api.apiflash.com/v1/urltoimage?
-//         access_key=${access}&format=png&
-//         height=${height}&response_type=image&url=${resolved_url}&width=${width}`)
-//         .then(response=>{
-//             // send to cloudinary and return link to image on cloudinary
-//             console.log(response)});
-//
+const PostJob = () => {
+    const [form, setForm] = useState({
+        name: '',
+        project_details: {
+            description: '',
+            tools: '',
+            link: '',
+            repository: '',
+        },
+        project_snapshot: '',
+    });
+    
+    let result, data; //temp data to append screenshot
     
     
-    // axios({
-    //     url: `https://api.cloudinary.com/v1_1/webweavers/upload`,
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'image/png',
-    //     }
-    // })
-//     return(
-//         <>
-//         </>
-//     )
-// };
+    const [message, setMessage] = useState('');
+    const [linkState, setLinkState] = useState('');
+    
+    const WebImage = async (url, access_key, width, height, upload_preset) => {
+        let resolved_url = url.replace(/:/g, "%3A").replace(/\//g, "%2F");
+        let formData = new FormData();
+    
+        setMessage('Getting Image');
+    
+    
+        axios({
+            url: `https://api.apiflash.com/v1/urltoimage?access_key=${access_key}&format=png&height=${height}&response_type=json&url=${resolved_url}&width=${width}`,
+            method: "GET",
+            responseType: "json",
+        }).then((response) => {
+                formData.append('file', response.data.url);
+                formData.append('upload_preset', upload_preset);
+                axios({
+                    url: "https://api.cloudinary.com/v1_1/webweavers/upload",
+                    method: "POST",
+                    data: formData,
+                })
+                    .then((response) => {
+                        data['project_snapshot'] = response.data.url.replace(/upload/g, "upload/w_400/");
+                        setLinkState('Available');
+                    })
+                    .catch((err) => {
+                        setLinkState('Are you sure that site is available ?');
+                        setMessage(err.message)
+                    })
+            }
+        ).catch((err) => setMessage(err.message));
+    };
+    
+    
+    const CreateProject = (e) => {
+        setMessage('');
+        setForm({
+                ...form, [e.target.name]: e.target.value.trim(),
+                project_details:
+                    {
+                        ...form.project_details, [e.target.name]:
+                            e.target.name === 'tools' ?
+                                e.target.value.replace(/,/g, ' ').trim().toLowerCase() : e.target.value.trim()
+                    },
+            }
+        )
+    };
+    
+    useEffect(() => {
+    
+    }, [form, message]);
+    
+    
+    const SendForm = (e) => {
+        e.preventDefault();
+        
+        if (form.project_details.tools) {
+            if (typeof (form.project_details.tools) === 'object') {
+                result = form.project_details.tools.join().split(' ').filter(el => el !== '');
+            } else {
+                result = form.project_details.tools.split(' ').filter(el => el !== '');
+            }
+            data = {...form, project_details: {...form.project_details, tools: result}};
+            console.log(data)
+            setForm(data);
+            
+            if (form.project_details.link) {
+                WebImage(
+                    form.project_details.link,
+                    "77460fb38d424cf4ae8f640f8bb0a541",
+                    1440,
+                    1080,
+                    "eaggx3vk"
+                )
+            }
+            
+        } else {
+            setMessage('Fill all entries');
+            setTimeout(() => {
+                setMessage('')
+            }, 5000)
+        }
+        
+        
+    };
+    
+    return (
+        <PostFormStyle>
+            <FormStyle>
+                <form action="" onSubmit={SendForm}>
+                    
+                    <div>
+                        <Text>Project Name:</Text>
+                        <input type="text" name='name' onChange={CreateProject} required/>
+                    </div>
+                    <div>
+                        <Text>Project Description:</Text>
+                        <textarea rows={'100px'} cols={'100%'} name='description' onChange={CreateProject}/>
+                    </div>
+                    <div>
+                        <Text>Tools:</Text>
+                        <input type="text" name='tools' onChange={CreateProject} required/>
+                    </div>
+                    <div>
+                        <Text>Project Link:</Text>
+                        <span>
+                            <span className={'loader'}>O</span>
+                            <input className={'loader-input'} type="text" name='link' placeholder={'http://'} onChange={CreateProject}/>
+                            <span className={'linkState'}>{linkState}</span>
+                        </span>
+                    </div>
+                    <div>
+                        <Text>Repository:</Text>
+                        <input type="text" name='repository' onChange={CreateProject}/>
+                    </div>
+                    
+                    <div className={'btn-message'}>
+                        <Button variant={'secondary'}
+                                type={'submit'}>{form.project_snapshot ? 'Submit' : 'Post Project'}</Button>
+                        <span className={'error'}><Text type={'sm'}>{message}</Text></span>
+                    </div>
+                
+                </form>
+            </FormStyle>
+            
+            <PreviewStyle>
+                <div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Name:</Text>
+                        <span>{form.name || 'waiting for input ...'}</span>
+                    </div>
+                    
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Project Description:</Text>
+                        <span>{form.project_details.description || 'waiting for input ...'}</span>
+                    </div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Tools Used In Project:</Text>
+                        <span>{<i className={"devicon-" + form.project_details.tools + "-plain"}/>|| 'waiting for input ...'}</span>
+                    </div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Web Link to Project:</Text>
+                        <span>{form.project_details.link || 'waiting for input ...'}</span>
+                    </div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Link to Repository:</Text>
+                        <span>{form.project_details.repository || 'waiting for input ...'}</span>
+                    </div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Generated Shot:</Text>
+                        <span>{form.project_snapshot ?
+                            <a href={form.project_snapshot || '#'}>Preview Screenshot</a>
+                            : 'waiting for input ...'}
+                            </span>
+                    </div>
+                    <div className={'valueBlock'}>
+                        <Text type={'med'}>Image:</Text>
+                        <span><div>{form.project_snapshot ?
+                            <img src={form.project_snapshot} alt="loading screenshot"/> :
+                            <div className="spinner-border" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>}</div></span>
+                    </div>
+                </div>
+            
+            </PreviewStyle>
+        </PostFormStyle>
+    )
+};
 
-// WebImage('77460fb38d424cf4ae8f640f8bb0a541', 'http://www.google.com/pages', 1440, 1080, 'chrisjosh');
+const PostFormStyle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    
+    @media screen and (max-width: 900px){
+        flex-direction: column-reverse;
+    }
+`;
+
+const FormStyle = styled.div`
+    width: 50%;
+    form {
+        div {
+            margin: 3rem;
+            input {
+                height: 3rem;
+                width: 100%;
+                text-indent: 1rem;
+            };
+            textarea {
+                height: 6rem;
+                width: 100%;
+                padding: 1rem;
+            };
+            p {
+                font-weight: bolder;
+            };
+            span{
+            position: relative;
+            .loader {
+                position: absolute;
+                color: black;
+                right: 10px;
+                display: flex;
+                align-items: center;
+                top: 0;
+                bottom: 0;}
+                .loader-input {padding-right: 50px;}
+            }
+                .linkState {font-size: 0.7rem; color: grey; font-style: italic;}
+        }
+        .btn-message {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .error {color: red};
+        }
+    }
+    @media screen and (max-width: 900px){
+            width: 100%;
+    }
+`;
+
+const PreviewStyle = styled.div`
+    border: 1px solid ${textColor};
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    // align-items: center;
+    width: 40%;
+    font-family: consolas;
+    div {
+        width: 100%;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: start;
+        
+        .valueBlock {
+            p {font-weight: bold;}
+            margin: 1rem 0;
+            span {
+                // width: 100%;
+                word-wrap: break-word;
+            }
+            span div {
+                padding: 1rem;
+                img {width: 100%}
+            }
+        }
+        .valueBlock:last-child{
+            border-top: 1px solid ${textColor};
+        }
+       
+    }
+        @media screen and (max-width: 900px){
+            width: 100%;
+    }
+    
+    
+`;
+
+export default PostJob;

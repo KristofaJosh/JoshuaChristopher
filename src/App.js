@@ -5,7 +5,6 @@ import NavBar from "./Components/organism/navbar";
 import FooterDiv from "./Components/organism/footerdiv";
 import StyleProvider from "./Contexts/styleContext/styleProvider";
 import './App.css';
-// import API from 'axios';
 
 
 const All = lazy(() => import('./Components/allelement'));
@@ -13,6 +12,8 @@ const About = lazy(() => import('./Compositions/pages/about'));
 const Works = lazy(() => import('./Compositions/pages/jobs'));
 const Contacts = lazy(() => import('./Compositions/pages/contact'));
 const Home = React.lazy(() => import('./Compositions/pages/home'));
+const PostJob = React.lazy(() => import('./Compositions/pages/admin/post_jobs'));
+
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                                     <Route path="/about" component={About}/>
                                     <Route path="/works" component={Works}/>
                                     <Route path="/contacts" component={Contacts}/>
+                                    <Route path="/post_job" component={PostJob}/>
                                     <Route path="/home"
                                            component={Home}/>
                                     <Route path="/" component={Home}/>
