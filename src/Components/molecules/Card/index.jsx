@@ -8,7 +8,7 @@ import {LazyLoadComponent} from 'react-lazy-load-image-component';
 
 
 export default function CardContainer(props) {
-    
+
     return (
         <CardContainerStyle>
             {props.children}
@@ -17,14 +17,13 @@ export default function CardContainer(props) {
 }
 
 export function Card({details}) {
-    console.log(details);
     return (
         <div>
             <LazyLoadComponent>
-                <CardStyle>
+                <CardStyle >
                     <Image>
                         <div>
-                            <a href={details['project_details'].link}>
+                            <a href={details.link}>
                                 <ImageContainer image={'' || details.project_snapshot} height={'12.5rem'}/>
                             </a>
                         </div>
@@ -36,15 +35,20 @@ export function Card({details}) {
                                 <Line/>
                             </div>
                             <div className='description'>
-                                <Text size={'xsm'}>{details.project_details.description}</Text>
+                                <Text size={'xsm'}>{details.description}</Text>
                             </div>
                         </div>
                         <div className='tools'>
                             <Line/>
                             <Text size={'sm'}>
-                                {details.project_details.tools.map(el =>
-                                    <i className={"devicon-" + el + "-plain"}/>
-                                )}
+                                {details.tools
+                                    .replace(/,/g, '').replace(/./, '')
+                                    .replace(/and/, '')
+                                    .split(' ')
+                                    .filter(el => el !== '')
+                                    .map(el =>
+                                        <i  className={"devicon-" + el + "-plain"}/>
+                                    )}
                             </Text>
                             <Line/>
                         </div>
@@ -52,7 +56,7 @@ export function Card({details}) {
                 </CardStyle>
             </LazyLoadComponent>
         </div>
-    
+
     )
 }
 

@@ -4,9 +4,13 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="slick" level="application" />
+    <orderEntry type="library" name="slick-theme" level="application" />
+    <orderEntry type="library" name="devicon" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
   </component>
 </module>
