@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import CardContainer, {Card} from "../../Components/molecules/Card";
 import axios from 'axios';
 
+
+
 export default function Jobs() {
 
     const [api, setApi] = useState([]);
