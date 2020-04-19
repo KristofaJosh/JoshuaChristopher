@@ -11,8 +11,8 @@ import StyleContext from "../../Contexts/styleContext/styleContext";
 
 
 export default function Home({changeTheme}) {
-
-
+    
+    
     return (
         <>
             <Content>
@@ -22,15 +22,16 @@ export default function Home({changeTheme}) {
                         <Text size={'big'}>brand to life </Text>
                         <Text size={'big'}>with my </Text>
                         <Text size={'big'}>help</Text>
-                        <Text size={'sm'}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Non, nemo dolor nihil animi similique eveniet!</Text>
+                        <Text size={'sm'}>I'm always interested in solving problems or automating everyday task.
+                            Are you minding a project ? Cool, let's talk</Text>
+                        
                         <Content>
                             <Button variant={'secondary'} link={true}>Contact Me</Button>
                             
                             <StyleContext.Consumer>
-                                {({changeTheme})=>  <Button variant={'primary'} empty fn={changeTheme}>☀</Button>}
+                                {({changeTheme}) => <Button variant={'primary'} empty fn={changeTheme}>☀</Button>}
                             </StyleContext.Consumer>
-
+                        
                         </Content>
                     </div>
                 </Inner>
