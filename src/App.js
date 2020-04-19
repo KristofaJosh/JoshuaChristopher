@@ -4,8 +4,9 @@ import {Body, Footer} from './Compositions/templates/index';
 import NavBar from "./Components/organism/navbar";
 import FooterDiv from "./Components/organism/footerdiv";
 import StyleProvider from "./Contexts/styleContext/styleProvider";
+import ReactGA from 'react-ga';
+import {createBrowserHistory} from 'history'
 import './App.css';
-
 
 const All = lazy(() => import('./Components/allelement'));
 const About = lazy(() => import('./Compositions/pages/about'));
@@ -15,12 +16,21 @@ const Home = React.lazy(() => import('./Compositions/pages/home'));
 const PostJob = React.lazy(() => import('./Compositions/pages/admin/post_jobs'));
 
 
+const trackingId = "UA-164002317-1"; // Replace with your Google Analytics tracking ID
+ReactGA.initialize(trackingId);
+const history = createBrowserHistory();
+
+// Initialize google analytics page view tracking
+history.listen(location => {
+    ReactGA.set({ page: location.pathname }); // Update the user's current page
+    ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
+
 
 function App() {
 
     return (
         <>
-
             <StyleProvider>
                     <Body variant={'default'}>
                         <BrowserRouter>
@@ -49,7 +59,6 @@ function App() {
                         <FooterDiv/>
                     </Footer>
             </StyleProvider>
-
         </>
     );
 }
