@@ -6,7 +6,6 @@ import Text from "../../Components/atoms/typography";
 
 export default function About() {
     let aboutMe = "I am Joshua Christopher";
-    let otherInfo = "story";
     return (
         <>
             <Header text={'About Me'}/>
@@ -15,34 +14,26 @@ export default function About() {
                     <Text>
                         <Text>&lt;p&gt;</Text>
                         {aboutMe}
-                        <br /> consecteturadipisicing elit.
-                        <br />
-                        Non, nemo dolor nihil animi
-                        <br />
-                        similique eveniet!
+                        <br/>
+                        FullStack Developer
+                        <br/>
+                        Python, EcmaScript, SQL, React, Django
+                        <br/>
+                        Building Rest API's, CI, Unit Testing
                         <Text>&lt;/p&gt;</Text>
                     </Text>
                 </InnerLeft>
                 <InnerLeft>
                     <Text>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, nemo
-                        dolor nihil animi similique eveniet! Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Non, nemo dolor nihil animi similique
-                        eveniet!
+                        Joshua Enyi-Christopher loves solving logical problems with computers, he is a fullstack
+                        developer with Over 3 years experience. He's core languages are Python and Javascript.
+                        He has a Bachelors in Computer Information Systems while in school the first programming language
+                        he learnt was C after which he moved to C++.
                     </Text>
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
+     
                     <Text>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, nemo
-                        eveniet!
-                        {otherInfo}
+                        Over the years, he has interned in several organisations where he has applied he's knowledge to
+                        improve and/or optimize manual processes.
                     </Text>
                 </InnerLeft>
             </Content>
