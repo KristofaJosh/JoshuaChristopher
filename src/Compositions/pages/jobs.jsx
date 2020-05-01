@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardContainer, {Card} from "../../Components/molecules/Card";
 import axios from 'axios';
-import styled from "styled-components";
 
 
 export default function Jobs() {
@@ -37,10 +36,6 @@ export default function Jobs() {
         </div>
     )
 }
-
-const Spinner = styled.div`
-
-`;
 
 
 export function RecentJobs() {

@@ -2,44 +2,35 @@ import React from "react";
 import Header from "../../Components/molecules/header";
 import {Content, InnerLeft} from "../templates";
 import Text from "../../Components/atoms/typography";
+import {footerBackgroundColor} from "../../Components/constants";
 
 export default function Contacts() {
+    
+    
     return (
         <>
-        <Header text={'Contact Me'}/>
+            <Header text={'Contact Me'}/>
             <Content>
                 <InnerLeft>
-                    <Text>
-                    <Text>&lt;p&gt;</Text>
-                        Lorem ipsum, dolor sit amet
-                        <br /> consecteturadipisicing elit.
-                        <br />
-                        Non, nemo dolor nihil animi
-                        <br />
-                        similique eveniet!
-                    <Text>&lt;/p&gt;</Text>
-                    </Text>
+                    <Text>You can reach me at: </Text>
                 </InnerLeft>
-                <InnerLeft>
-                    <Text>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, nemo
-                        dolor nihil animi similique eveniet! Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Non, nemo dolor nihil animi similique
-                        eveniet!
-                    </Text>
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
-                    {/*<List>*/}
-                    {/*    <Text mb={0}>Lorem ipsum, dolor sit </Text>*/}
-                    {/*</List>*/}
-                    <Text>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, nemo
-                        eveniet!
-                    </Text>
+                <InnerLeft style={{width: '100%'}}>
+                    <InnerLeft>
+                        <span style={{color: `${footerBackgroundColor}`, marginRight: '5px'}}>Email: </span>
+                        <Text>
+                            christopherjoshua25@hotmail.com
+                        </Text>
+                    </InnerLeft>
+                    <InnerLeft>
+                        <span style={{color: `${footerBackgroundColor}`,  marginRight: '5px'}}>LinkedIn: </span>
+                        <Text>
+                            christofajosh
+                        </Text>
+                    </InnerLeft>
+                    <InnerLeft>
+                        <span style={{color: `${footerBackgroundColor}`,  marginRight: '5px'}}>Skype: </span>
+                        <Text>christofajosh</Text>
+                    </InnerLeft>
                 </InnerLeft>
             </Content>
         </>
