@@ -13,6 +13,7 @@ const About = lazy(() => import('./Compositions/pages/about'));
 const Works = lazy(() => import('./Compositions/pages/jobs'));
 const Contacts = lazy(() => import('./Compositions/pages/contact'));
 const Home = React.lazy(() => import('./Compositions/pages/home'));
+const BriefMe = React.lazy(() => import('./Compositions/pages/briefme'));
 const PostJob = React.lazy(() => import('./Compositions/pages/admin/post_jobs'));
 
 
@@ -44,6 +45,7 @@ function App() {
                                 <NavBar/>
                                 <Switch>
                                     <Route path="/all" component={All}/>
+                                    <Route path={'/briefMe'} component={BriefMe}/>
                                     <Route path="/about" component={About}/>
                                     <Route path="/works" component={Works}/>
                                     <Route path="/contacts" component={Contacts}/>

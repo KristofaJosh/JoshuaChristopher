@@ -27,7 +27,7 @@ export default function About() {
                     <Text>
                         Joshua Enyi-Christopher loves solving logical problems with computers, he is a fullstack
                         developer with Over 3 years experience. He's core languages are Python and Javascript.
-                        He has a Bachelors in Computer Information Systems while in school the first programming language
+                        He has a Bachelors in Computer Information Systems. While in school, the first programming language
                         he learnt was C after which he moved to C++.
                     </Text>
      

@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Text from '../typography';
 import PropTypes from 'prop-types';
-import {buttonText, buttonBackground, hover, buttonBorder} from '../../constants';
+import {buttonBackground, buttonBorder, buttonText, hover} from '../../constants';
 
 
 let element = '';
 
 export default function Button(props) {
     if (props.link) {
-
+        
         element =
             <>
                 <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
@@ -17,17 +17,18 @@ export default function Button(props) {
                         <span> /&gt;</span></Text></a>
                 </ButtonStyle>
             </>
-
+        
     } else {
         element =
-        <>
-            <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
-                <Text>{props.children}<span> /&gt;</span></Text>
-            </ButtonStyle>
-        </>
+            <>
+                <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
+                    <Text>{props.children}<span> /&gt;</span></Text>
+                </ButtonStyle>
+            </>
     }
     
-    if (props.empty){
+    
+    if (props.empty) {
         element =
             <>
                 <ButtonStyle variant={props.variant} onClick={props.fn} {...props}>
@@ -35,7 +36,6 @@ export default function Button(props) {
                 </ButtonStyle>
             </>
     }
-    
     
     
     return (

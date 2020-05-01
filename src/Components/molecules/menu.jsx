@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
-import {textColor, hover} from "../constants";
+import {Link, NavLink} from "react-router-dom";
+import {hover, textColor} from "../constants";
 import Text from "../atoms/typography";
 import PropTypes from "prop-types";
 import Button from "../atoms/button";
 
 
 export default function Menu(props) {
-
+    
     const paths = ["Home", "About", "Works", "Contacts"];
-
+    
     return (
         <MenuStyle {...props}>
             {paths.map(el => (
@@ -20,11 +20,12 @@ export default function Menu(props) {
                 ><Text size={'sm'}>{el}</Text>
                 </NavLink>
             ))}
-            <Button variant={'primary'}>brief me</Button>
-
+            <Link to={'/briefMe'}>
+                <Button variant={'primary'} to={'/briefMe'}>brief me</Button>
+            </Link>
         </MenuStyle>
     )
-
+    
 }
 
 const MenuStyle = styled.div`
