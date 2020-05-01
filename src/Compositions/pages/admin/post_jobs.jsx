@@ -51,7 +51,7 @@ const PostJob = () => {
                     })
                     .catch((err) => {
                         setLinkState('Are you sure the site is available ?');
-                        setMessage(err.message+'. Image was not created, try again');
+                        setMessage(err.message + '. Image was not created, try again');
                         setLoader(false)
                     })
             }
@@ -109,8 +109,6 @@ const PostJob = () => {
         }
         
         
-        
-        
     };
     
     return (
@@ -128,7 +126,8 @@ const PostJob = () => {
                     </div>
                     <div>
                         <Text>Tools:</Text>
-                        <input type="text" name='tools' onChange={CreateProject} placeholder={'python javascript ruby ...'} required/>
+                        <input type="text" name='tools' onChange={CreateProject}
+                               placeholder={'python javascript ruby ...'} required/>
                     </div>
                     <div>
                         <Text>Project Link:</Text>
@@ -214,7 +213,7 @@ const PostJob = () => {
                                     <div className="spinner-border" role="status">
                                         <span className="sr-only"/>
                                     </div>
-                                : ''}
+                                    : ''}
                                 </span>
                             </>
                         }</div></span>

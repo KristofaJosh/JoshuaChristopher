@@ -4,13 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardContainer, {Card} from "../../Components/molecules/Card";
 import axios from 'axios';
-
+import styled from "styled-components";
 
 
 export default function Jobs() {
-
+    
     const [api, setApi] = useState([]);
-
+    
     useEffect(() => {
         axios({
             method: 'GET',
@@ -21,18 +21,26 @@ export default function Jobs() {
             )
             .catch(err => console.log(err.message))
     }, []);
-
+    
     return (
-        <>
+        <div>
             <Header text={'Projects'}/>
             <CardContainer>
-                {api.map((el, index) =>
-                    <Card key={index} details={el}/>
-                )}
+                {api.length < 1 ?
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    :
+                    api.map((el, index) => <Card key={index} details={el}/>)
+                }
             </CardContainer>
-        </>
+        </div>
     )
 }
+
+const Spinner = styled.div`
+
+`;
 
 
 export function RecentJobs() {
@@ -40,6 +48,6 @@ export function RecentJobs() {
         <>
             {/*<CardCarousel/>*/}
         </>
-
+    
     );
 }
